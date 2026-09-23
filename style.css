@@ -1,0 +1,674 @@
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #090014;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* ========================= */
+/* COMMON */
+/* ========================= */
+
+.screen {
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ========================= */
+/* WELCOME SCREEN */
+/* ========================= */
+
+#welcome {
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #4b0082,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            #8b005d,
+            transparent 35%
+        ),
+
+        #090014;
+
+}
+
+
+.welcome-content {
+
+    max-width: 700px;
+
+    padding: 30px;
+
+    animation: fadeIn 2s ease;
+
+}
+
+
+.small-text {
+
+    font-size: 22px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.welcome-content h1 {
+
+    font-size: clamp(45px, 8vw, 85px);
+
+    line-height: 1.05;
+
+    margin-bottom: 25px;
+
+}
+
+
+.welcome-content h1 span {
+
+    color: #ff7eb6;
+
+}
+
+
+.subtitle {
+
+    font-size: 19px;
+
+    color: #d7c8df;
+
+    margin-bottom: 40px;
+
+}
+
+
+/* ========================= */
+/* BUTTON */
+/* ========================= */
+
+button {
+
+    border: none;
+
+    padding: 15px 30px;
+
+    border-radius: 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f9a,
+            #9b4dff
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 10px 30px
+        rgba(255, 79, 154, 0.3);
+
+}
+
+
+button:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 15px 40px
+        rgba(255, 79, 154, 0.5);
+
+}
+
+
+/* ========================= */
+/* BIRTHDAY SCREEN */
+/* ========================= */
+
+#birthday {
+
+    background:
+
+        radial-gradient(
+            circle at 50% 30%,
+            #5c006f,
+            transparent 40%
+        ),
+
+        #100019;
+
+}
+
+
+.birthday-content {
+
+    animation: zoomIn 1.5s ease;
+
+}
+
+
+.gift {
+
+    font-size: 120px;
+
+    cursor: pointer;
+
+    animation: bounce 2s infinite;
+
+    margin-bottom: 20px;
+
+}
+
+
+.birthday-title {
+
+    font-size:
+        clamp(
+            50px,
+            9vw,
+            90px
+        );
+
+    color: #ff75b5;
+
+}
+
+
+.birthday-content h2 {
+
+    font-size: 38px;
+
+    margin: 10px 0 20px;
+
+}
+
+
+.birthday-content h2 span {
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px #ff4f9a,
+        0 0 20px #ff4f9a,
+        0 0 40px #ff4f9a;
+
+}
+
+
+.birthday-content p {
+
+    font-size: 20px;
+
+    color: #d8c9df;
+
+    margin-bottom: 35px;
+
+}
+
+
+/* ========================= */
+/* MEMORIES */
+/* ========================= */
+
+.section {
+
+    min-height: 100vh;
+
+    padding: 80px 20px;
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            #420052,
+            transparent 40%
+        ),
+
+        #090014;
+
+}
+
+
+.section h1 {
+
+    font-size:
+        clamp(
+            35px,
+            6vw,
+            60px
+        );
+
+    color: #ff8fc5;
+
+    margin-bottom: 15px;
+
+}
+
+
+.section-subtitle {
+
+    color: #cfc1d5;
+
+    margin-bottom: 50px;
+
+}
+
+
+/* ========================= */
+/* PHOTOS */
+/* ========================= */
+
+.photo-container {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                220px,
+                1fr
+            )
+        );
+
+    gap: 30px;
+
+}
+
+
+.photo-card {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    padding: 12px;
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        0.5s;
+
+    opacity: 0;
+
+    transform:
+        translateY(50px);
+
+}
+
+
+.photo-card.show {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.photo-card:hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.03);
+
+}
+
+
+.photo-card img {
+
+    width: 100%;
+
+    height: 320px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+}
+
+
+.photo-card p {
+
+    margin-top: 12px;
+
+    font-size: 17px;
+
+    color: #ffd2e7;
+
+}
+
+
+/* ========================= */
+/* MESSAGE */
+/* ========================= */
+
+#message {
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #60005e,
+            transparent 50%
+        ),
+
+        #090014;
+
+}
+
+
+.message-box {
+
+    max-width: 750px;
+
+    padding: 35px;
+
+}
+
+
+.message-box h1 {
+
+    font-size: 65px;
+
+    color: #ff82bd;
+
+    margin-bottom: 35px;
+
+}
+
+
+#typingText {
+
+    font-size: 23px;
+
+    line-height: 1.8;
+
+    color: #eee;
+
+    min-height: 180px;
+
+}
+
+
+.final-line {
+
+    margin-top: 30px;
+
+    font-size: 25px;
+
+    color: #ff9bc8;
+
+}
+
+
+.hearts {
+
+    font-size: 35px;
+
+    margin-top: 30px;
+
+    animation:
+        pulse 1.5s infinite;
+
+}
+
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes zoomIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.7);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes bounce {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-20px);
+
+    }
+
+}
+
+
+@keyframes pulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.15);
+
+    }
+
+}
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 600px) {
+
+    .welcome-content {
+
+        padding: 20px;
+
+    }
+
+
+    .welcome-content h1 {
+
+        font-size: 48px;
+
+    }
+
+
+    .birthday-title {
+
+        font-size: 48px;
+
+    }
+
+
+    .birthday-content h2 {
+
+        font-size: 30px;
+
+    }
+
+
+    .gift {
+
+        font-size: 90px;
+
+    }
+
+
+    .photo-container {
+
+        grid-template-columns: 1fr;
+
+        max-width: 350px;
+
+    }
+
+
+    .photo-card img {
+
+        height: 400px;
+
+    }
+
+
+    .message-box h1 {
+
+        font-size: 45px;
+
+    }
+
+
+    #typingText {
+
+        font-size: 18px;
+
+    }
+
+}
+```
+/* SINGLE MEMORY IMAGE */
+
+#memories {
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memories-container {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.memory-title {
+    font-size: 42px;
+    margin-bottom: 30px;
+}
+
+.single-memory-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-memory-image img {
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+}
+
+.memory-button {
+    margin-top: 35px;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+}
